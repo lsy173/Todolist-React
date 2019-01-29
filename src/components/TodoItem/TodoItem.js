@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './TodoItem.scss';
 import className from 'classnames/bind';
 
-const cx = classNames.bind(styles);
+const cx = className.bind(styles);
 
 class TodoItem extends Component {
     render () {
