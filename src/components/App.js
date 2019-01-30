@@ -22,7 +22,7 @@ class App extends Component {
   }
 
   handleChange = (e) => {
-      const {value} = e.target;
+      const { value } = e.target;
       this.setState({
         input: value
       });
@@ -49,7 +49,7 @@ class App extends Component {
   handleToggle = (id) => {
     // Find array's index using 'id'.
     const { todos } = this.state;
-    const index = todos.findIndex(todo=> todo.id == id);
+    const index = todos.findIndex(todo => todo.id === id);
 
       // Invert the done value of found data.
       const toggled = {
@@ -67,18 +67,34 @@ class App extends Component {
         ]
       });
   }
+
+  // Remove the chosen id from the array.
+  handleRemove = (id) => {
+    const { todos } = this.state;
+    const index = todos.findIndex(todo => todo.id === id);
+    
+    // Copy data near slice, without found index.
+    this.setState({
+      todos: [
+        ...todos.slice(0, index),
+        ...todos.slice(index+1, todos.length)
+      ]
+    });
+  }
+
   render() {
     const { input, todos } = this.state;
     const {
       handleChange,
       handleInsert, // Insert added.
-      handleToggle // Toggle added.
+      handleToggle, // Toggle added.
+      handleRemove
     } = this;
 
     return (
      <PageTemplate>
        <TodoInput onChange={handleChange} onInsert={handleInsert} value={input}/>
-       <TodoList todos={todos} onToggle={handleToggle}/>
+       <TodoList todos={todos} onToggle={handleToggle} onRemove={handleRemove}/>
      </PageTemplate>
     );
   }

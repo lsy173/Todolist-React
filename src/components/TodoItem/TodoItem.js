@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styles from './TodoItem.scss';
-import className from 'classnames/bind';
+import classNames from 'classnames/bind';
 
-const cx = className.bind(styles);
+const cx = classNames.bind(styles);
 
 class TodoItem extends Component {
     render () {
@@ -12,7 +12,10 @@ class TodoItem extends Component {
             <div className={cx('todo-item')} onClick={onToggle} >
               <input className={cx('tick')} type="checkbox" checked={done} readOnly/>
               <div className={cx('text', {done})}>{children}</div>
-              <div className={cx('delete')} onClick={onRemove}>[Erase]</div>
+              <div className={cx('delete')} onClick={(e) => {
+                  onRemove();
+                  e.stopPropagation();
+              }}>[Erase]</div>
             </div>
         );
     }
