@@ -3,10 +3,19 @@ import TodoItem from '../TodoItem';
 
 class TodoList extends Component {
     render () {
+        const { todos } = this.props;
+        const todoList = todos.map(
+            todo => (
+                <TodoItem
+                  key={todo.id}
+                  done={todo.done}>
+                  {todo.text}
+                </TodoItem>
+            )
+        );
         return (
             <div>
-                <TodoItem done>Studying React</TodoItem>
-                <TodoItem>Styling Component</TodoItem>
+                {todoList}
             </div>
         );
     }
