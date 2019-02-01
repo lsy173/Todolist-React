@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 class TodoItem extends Component {
 
     shouldComponentUpdate (nextprops, nextstate) {
-        return this.props.done != nextProps.done;
+        return this.props.done !== nextProps.done;
     }
 
     render () {
