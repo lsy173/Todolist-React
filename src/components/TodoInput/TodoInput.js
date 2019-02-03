@@ -15,7 +15,7 @@ const TodoInput = ({value, onChange, onInsert}) => {
     
     // If 'Enter' is pressed, execute onInsert.
     const handleKeyPress = (e) => {
-        if( e.key == 'Enter')
+        if( e.key === 'Enter')
         onInsert();
     }
 
